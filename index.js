@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.post('/mail', async (req, res) => {
+app.post('/mail', (req, res) => {
 	const { name, lastname, email, subject, message } = req.body;
 	if (!name || !lastname || !email || !subject || !message) {
 		res.status(400).send({
