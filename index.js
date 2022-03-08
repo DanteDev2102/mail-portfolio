@@ -1,5 +1,5 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const { createTransport } = require('nodemailer');
 require('dotenv').config();
 const app = express();
 
@@ -14,7 +14,7 @@ app.post('/mail', async (req, res) => {
 		});
 		return false;
 	}
-	const transporter = nodemailer.createTransport({
+	const transporter = createTransport({
 		service: 'gmail',
 		host: process.env.HOST_EMAIL,
 		auth: {
