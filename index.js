@@ -1,10 +1,13 @@
 const express = require('express');
 const { createTransport } = require('nodemailer');
+const cors = require('cors');
 require('dotenv').config();
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 app.post('/mail', (req, res) => {
 	const { name, lastname, email, subject, message } = req.body;
